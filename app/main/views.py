@@ -30,4 +30,4 @@ def main():
         next_episode = get_next_episode(series)
         series_info.append(dict(previous=previous_episode, next=next_episode, name=series_name))
 
-    return render_template('index.html', series=series_info)
+    return render_template('main.html', series=series_info)
