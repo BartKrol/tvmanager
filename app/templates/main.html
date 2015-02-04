@@ -41,22 +41,18 @@
 <div class="row container">
     <div class="col-xs-12 col-md-4 col-sm-4 col-sm-offset-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
         <h1 align="middle">Closest episodes.</h1>
-            <div class="row-md-8">
-                <h3 align="middle">First Series</h3>
 
+        {% for series_info in series %}
+            <div class="row-md-8">
+                <h3 align="middle">{{series_info.name}}</h3>
                 <h4>
-                        This is the first item of the first list <br>
-                        This is the second item of the first list<br>
+                    <p>S{{series_info.next.season}}E{{series_info.next.code}}
+                        <strong>{{series_info.next.title}}</strong>, {{series_info.next.airdate}}</p>
+                    <p>S{{ series_info.previous.season }}E{{ series_info.previous.code }}
+                        <strong>{{ series_info.previous.title }}</strong>, {{ series_info.previous.airdate }}</p>
                 </h4>
             </div>
-            <div class="row-md-8">
-                <h3 align="middle">Second Series</h3>
-                <h4>
-                        This is the first item of the second list <br>
-                        This is the second item of the second list<br>
-                </h4>
-            </div>
-
+        {% endfor %}
         <div class="arrow"></div>
                 <div class="arrow-cover"></div>
                 <a href="#search-jet"><div id="arrow-link"></div></a>
