@@ -22,5 +22,4 @@ def create_app(config_name):
 
     app.register_blueprint(authentication_blueprint, template_folder='templates')
 
-
     return app
