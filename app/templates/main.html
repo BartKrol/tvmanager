@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-top navbar-fixed-top">
+<div class="navbar navbar-top navbar-static-top">
     <div class="container page">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Tvmanager</a>
@@ -45,10 +45,11 @@
             <div class="row-md-8">
                 <h3 align="middle">{{series_info.name}}</h3>
                 <h4>
-                    <p>S{{series_info.next.season}}E{{series_info.next.code}}
-                        <strong>{{series_info.next.title}}</strong>, {{series_info.next.airdate}}</p>
-                    <p>S{{ series_info.previous.season }}E{{ series_info.previous.code }}
-                        <strong>{{ series_info.previous.title }}</strong>, {{ series_info.previous.airdate }}</p>
+                    S{{series_info.next.season}}E{{series_info.next.code}}
+                        <strong>{{series_info.next.title}}</strong>, {{series_info.next.airdate}}
+                    <br>
+                    S{{ series_info.previous.season }}E{{ series_info.previous.code }}
+                        <strong>{{ series_info.previous.title }}</strong>, {{ series_info.previous.airdate }}
                 </h4>
             </div>
         {% endfor %}
