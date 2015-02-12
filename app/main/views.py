@@ -1,5 +1,6 @@
 from . import main
 from flask import render_template
+from flask.ext import restful
 from tvrage import api
 from datetime import date
 
@@ -19,15 +20,21 @@ def get_previous_episode(series):
     return {'season': episode.season, 'code': episode.number,
             'title': episode.title, 'airdate': episode.airdate.isoformat()}
 
+class HelloWorld(restful.Resource):
+    def get(self):
+        return {'hello': 'world'}
 
-@main.route('/')
-def main():
-    series_info = []
-    for series_name in series_list:
-        series = api.Show(series_name)
+api.add_resource(HelloWorld, '/')
 
-        previous_episode = get_previous_episode(series)
-        next_episode = get_next_episode(series)
-        series_info.append(dict(previous=previous_episode, next=next_episode, name=series_name))
 
-    return render_template('main.html', series=series_info)
+# @main.route('/')
+# def main():
+#     series_info = []
+#     for series_name in series_list:
+#         series = api.Show(series_name)
+#
+#         previous_episode = get_previous_episode(series)
+#         next_episode = get_next_episode(series)
+#         series_info.append(dict(previous=previous_episode, next=next_episode, name=series_name))
+#
+#     return render_template('main.html', series=series_info)
