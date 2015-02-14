@@ -54,3 +54,6 @@ target/
 
 # Idea
 .idea
+
+# Database
+*.sqlite
