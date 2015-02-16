@@ -2,7 +2,7 @@ language: python
 python:
 - '2.7'
 install: pip install -r requirements.txt
-script: ./test_all.sh
+script: ./.test_all.sh
 env:
   global:
     secure: TiX4MSOovChbs5oO61zzVNS+Y7BTYZ2gS33ia5szsVBoxnSqZmbgWbynSd124VEeQZPtfVHoErQv5dnsXSsTCrqM9/lfIAhuXcOw5I0DMVtJiJLOoOztfZeQg1MY3TJrxckSi8V9/3cSvII1sGzIjuTaH0RbHH8Ekzj6D9aJFpA=

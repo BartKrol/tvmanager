@@ -7,7 +7,7 @@ import NavbarCtrl from '../components/navbar/navbar.controller';
 angular.module('angTest', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ui.bootstrap'])
   .controller('MainCtrl', MainCtrl)
   .controller('NavbarCtrl', NavbarCtrl)
-  
+
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

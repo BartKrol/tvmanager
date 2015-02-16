@@ -25,14 +25,15 @@
     <div class="row-md-8" ng-repeat="tvserie in tvseries">
       <h3 align="middle">{{tvserie.name}}</h3>
       <h4>
+
         <p>
-          S{{tvserie.next.s}}E{{tvserie.next.e}}
-          <strong>{{tvserie.next.episode}}</strong>, {{tvserie.next.airdate}}
+          S{{tvserie.next.season}}E{{tvserie.next.code}}
+          <strong>{{tvserie.next.title}}</strong>, {{tvserie.next.airdate}}
         </p>
 
         <p>
-          S{{ tvserie.previous.s }}E{{ tvserie.previous.e }}
-          <strong>{{ tvserie.previous.episode }}</strong>, {{ tvserie.previous.airdate }}
+          S{{tvserie.previous.season}}E{{tvserie.previous.code}}
+          <strong>{{tvserie.previous.title}}</strong>, {{tvserie.previous.airdate}}
         </p>
       </h4>
     </div>

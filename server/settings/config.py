@@ -17,6 +17,21 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
+    @staticmethod
+    def static_files_endpoint(app):
+        index = lambda: app.send_static_file('index.html')
+        app.add_url_rule('/', 'index', index)
+
+        static_files = lambda path: app.send_static_file('{0}'.format(path))
+        app.add_url_rule('/<path:path>', 'static_files', static_files)
+
+    @staticmethod
+    def init_app(app):
+        app.static_folder = os.environ.get('CLIENT_DIST_FOLDER') or 'static'
+        app.static_url_path = ''
+
+        DevelopmentConfig.static_files_endpoint(app)
+
 
 class TestingConfig(Config):
     TESTING = True

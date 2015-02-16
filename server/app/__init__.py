@@ -6,6 +6,7 @@ from flask.ext.restful import Api
 
 db = SQLAlchemy()
 
+
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
@@ -14,16 +15,10 @@ def create_app(config_name):
     Bootstrap(app)
 
     # TODO - better solution
-
     from . import main, authentication
     api = Api(app)
-    api.add_resource(main.resources.Episodes, '/')
+    api.add_resource(main.resources.Episodes, '/episodes')
 
     return app
-
-
-# def add_resources(api):
-#     add_main_resources(api)
-
 
 
