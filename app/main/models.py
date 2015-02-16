@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -31,7 +32,7 @@ class SeriesOfUser(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     series_id = db.Column(db.Integer)
-    user_id = relationship("user", order_by="user.id", backref="series_of_user")
+    user_id = db.Column(db.Integer, ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
         return '<series_for_user (0)>'.format(self.user_id, self.series_id)
