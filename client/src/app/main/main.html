@@ -2,34 +2,11 @@
   <div ng-include="'components/navbar/navbar.html'"></div>
 
   <div class="container vertical-center">
+    <div ng-include="'components/shows/shows.html'"></div>
 
-    <ul class="nav nav-tabs" ng-controller="MainCtrl">
-      <li role="presentation" ng-class="element.is_active" ng-click="makeActive(element)" ng-repeat="element in elements"><a href="#">{{element.text}}</a></li>
-    </ul>
-
-
-    <!--<div class="col-xs-12 col-md-4 col-sm-4 col-lg-4">-->
-      <!--<h1 align="middle">Closest episodes.</h1>-->
-
-      <!--<div class="row-md-8" ng-repeat="tvserie in tvseries">-->
-        <!--<h3 align="middle">{{tvserie.name}}</h3>-->
-        <!--<h4>-->
-
-          <!--<p>-->
-            <!--S{{tvserie.next.season}}E{{tvserie.next.code}}-->
-            <!--<strong>{{tvserie.next.title}}</strong>, {{tvserie.next.airdate}}-->
-          <!--</p>-->
-
-          <!--<p>-->
-            <!--S{{tvserie.previous.season}}E{{tvserie.previous.code}}-->
-            <!--<strong>{{tvserie.previous.title}}</strong>, {{tvserie.previous.airdate}}-->
-          <!--</p>-->
-        <!--</h4>-->
-      <!--</div>-->
-    <!--</div>-->
   </div>
 
-  <!--TODO - controller-->
+  <!--TODO - directive-->
   <div class="container vertical-center" id="search-jet">
     <div class="col-xs-12 col-md-3 col-sm-4 col-lg-3">
       <h1 class="cover-heading">Search results.</h1>
