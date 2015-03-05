@@ -3,26 +3,28 @@ from tvrage import api
 from datetime import date
 
 
-series_list = ['Supernatural', 'Gotham', 'Flash', 'Suits', 'Arrow']
+def episode_information(episode):
+    return {'season': episode.season, 'code': episode.number,
+            'title': episode.title, 'airdate': episode.airdate.isoformat()}
 
 
 def get_next_episode(series):
     for episode in series.current_season.values():
         if (episode.airdate is not None) and (episode.airdate >= date.today()):
-            return {'season': episode.season, 'code': episode.number,
-                    'title': episode.title, 'airdate': episode.airdate.isoformat()}
+            return episode_information(episode)
 
 
 def get_previous_episode(series):
     episode = series.latest_episode
-    return {'season': episode.season, 'code': episode.number,
-            'title': episode.title, 'airdate': episode.airdate.isoformat()}
+    return episode_information(episode)
 
 
-class Episodes(restful.Resource):
+class TrendingShows(restful.Resource):
+    series_list = ['Supernatural', 'Gotham', 'Flash', 'Suits', 'Arrow']
+
     def get(self):
         series_info = []
-        for series_name in series_list:
+        for series_name in self.series_list:
             series = api.Show(series_name)
 
             previous_episode = get_previous_episode(series)
@@ -30,3 +32,13 @@ class Episodes(restful.Resource):
             series_info.append(dict(previous=previous_episode, next=next_episode, name=series_name))
 
         return series_info
+
+
+# class ShowsForUser(restful.Resource):
+#     decorators = [jwt_required()]
+#
+#     def get(self):
+#         return SeriesForUsers.filter(user_id=g.user.id)
+#
+#     def post(self, series_id):
+#         SeriesForUsers(user_id=g.user.id, series_id=series_id)

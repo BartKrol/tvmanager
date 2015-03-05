@@ -1,0 +1,17 @@
+<div ng-controller="LoginCtrl" >
+  <form class="navbar-form navbar-right" ng-submit="loginUser()" ng-hide="logged">
+    <div class="form-group">
+      <input type="text" name="email" placeholder="Email" class="form-control" ng-model="email" >
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Password" class="form-control" ng-model="password" >
+    </div>
+    <button type="submit" class="btn btn-success" >Sign in</button>
+    <button class="btn btn-danger" >Sign up</button>
+  </form>
+
+
+  <form class="navbar-form navbar-right" ng-submit="logoutUser()" ng-show="logged">
+    <button type="submit" class="btn btn-success" >Log out</button>
+  </form>
+</div>

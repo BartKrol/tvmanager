@@ -17,6 +17,8 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
+    JWT_AUTH_URL_RULE = '/api/auth/'
+
     @staticmethod
     def static_files_endpoint(app):
         index = lambda: app.send_static_file('index.html')
@@ -27,10 +29,10 @@ class DevelopmentConfig(Config):
 
     @staticmethod
     def init_app(app):
-        app.static_folder = os.environ.get('CLIENT_DIST_FOLDER') or 'static'
-        app.static_url_path = ''
-
-        DevelopmentConfig.static_files_endpoint(app)
+        if os.environ.get('CLIENT_DIST_FOLDER'):
+            app.static_folder = os.environ.get('CLIENT_DIST_FOLDER')
+            app.static_url_path = ''
+            DevelopmentConfig.static_files_endpoint(app)
 
 
 class TestingConfig(Config):
