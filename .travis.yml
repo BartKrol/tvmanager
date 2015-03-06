@@ -2,16 +2,16 @@ language: python
 python:
 - '2.7'
 install: pip install -r server/requirements.txt
-script: ./.test_all.sh
-env:
-  global:
-    secure: TiX4MSOovChbs5oO61zzVNS+Y7BTYZ2gS33ia5szsVBoxnSqZmbgWbynSd124VEeQZPtfVHoErQv5dnsXSsTCrqM9/lfIAhuXcOw5I0DMVtJiJLOoOztfZeQg1MY3TJrxckSi8V9/3cSvII1sGzIjuTaH0RbHH8Ekzj6D9aJFpA=
-before_install:
-- openssl aes-256-cbc -K $encrypted_2cea1e19cfd8_key -iv $encrypted_2cea1e19cfd8_iv
-  -in .travis/deploy_key.pem.enc -out .travis/deploy_key.pem -d
-after_success:
-- touch ~/.ssh/authorized_keys
-- chmod 600 ~/.ssh/authorized_keys
-- cat .travis/deploy_key.pem >> ~/.ssh/authorized_keys
-- git remote add production PRODUCTION_SERVER
-- git push production
+script: ./server/manage.py test
+# env:
+#   global:
+#     secure: TiX4MSOovChbs5oO61zzVNS+Y7BTYZ2gS33ia5szsVBoxnSqZmbgWbynSd124VEeQZPtfVHoErQv5dnsXSsTCrqM9/lfIAhuXcOw5I0DMVtJiJLOoOztfZeQg1MY3TJrxckSi8V9/3cSvII1sGzIjuTaH0RbHH8Ekzj6D9aJFpA=
+# before_install:
+# - openssl aes-256-cbc -K $encrypted_2cea1e19cfd8_key -iv $encrypted_2cea1e19cfd8_iv
+#   -in .travis/deploy_key.pem.enc -out .travis/deploy_key.pem -d
+# after_success:
+# - touch ~/.ssh/authorized_keys
+# - chmod 600 ~/.ssh/authorized_keys
+# - cat .travis/deploy_key.pem >> ~/.ssh/authorized_keys
+# - git remote add production PRODUCTION_SERVER
+# - git push production
