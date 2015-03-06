@@ -20,6 +20,7 @@ $ python server/manage.py
 ```
 
 ### Setting up the database
+In order to apply all the necessary migrations run.
 
 ```sh
 $ python server/manage.py db upgrade
