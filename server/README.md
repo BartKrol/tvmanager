@@ -20,7 +20,7 @@ $ python manage.py
 ### Running Flask shell
 
 Optional requirements:
-- [http://ipython.org/](http://ipython.org/) for a nice interactive shell experience
+- [IPython](http://ipython.org/) for a nice interactive shell experience
 
 You can install optional requirements by using pip and `server/optional_requirements.txt`
 
