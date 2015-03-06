@@ -5,4 +5,4 @@ A simple web app to pointlessly track your favourite tv shows.
 # Client
 
 # Server
-The documentation for server is available [here](server)
+The documentation for server is available in the [server](server) directory.
