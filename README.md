@@ -1,21 +1,22 @@
 [![Build Status](https://travis-ci.org/BartKrol/tvmanager.svg?branch=master)](https://travis-ci.org/BartKrol/tvmanager)
 
 # Server
+For all server related stuff, assume that you are in the `server` directory.
 
 ## Requirements
 Using Python 2 for now.
 
-Install the requirements using pip and `server/requirements.txt`
+Install the requirements using pip and `requirements.txt`
 
 ```sh
-$ pip install -r server/requirements.txt
+$ pip install -r rver/requirements.txt
 ```
 
 ## Usage
-You can run the server using `server/manage.py`. Invoked without any arguments will list the available options
+You can run the server using `manage.py`. Invoked without any arguments will list the available options
 
 ```sh
-$ python server/manage.py
+$ python manage.py
 ```
 
 ### Running Flask shell
@@ -26,12 +27,12 @@ Optional requirements:
 You can install optional requirements by using pip and `server/optional_requirements.txt`
 
 ```sh
-$ pip install -r server/optional_requirements.txt
+$ pip install -r optional_requirements.txt
 ```
 
 ### Setting up the database
 In order to apply all the necessary migrations run.
 
 ```sh
-$ python server/manage.py db upgrade
+$ python manage.py db upgrade
 ```
