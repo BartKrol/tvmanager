@@ -20,18 +20,21 @@ def make_shell_context():
 @manager.command
 def test(coverage=False):
     """Run unit tests."""
-    import nose
+    import nose2
 
-    server_dir = os.path.dirname(os.path.realpath(__file__))
+    script_path = os.path.realpath(__file__)
+    server_path = os.path.dirname(script_path) #+ '/tests'
 
-    # Remember that the first argument is always cwd
-    arguments = [os.getcwd(), server_dir]
+    # Remember that the first argument is always current file
+    arguments = [script_path, '-s', server_path]
+    plugins = ['nose2.plugins.layers']
 
     if coverage:
         arguments.append('--with-coverage')
-        arguments.append('--cover-package=app')
+        # This not available in nose2
+        # arguments.append('--cover-package=app')
 
-    return nose.main(argv=arguments)
+    return nose2.discover(argv=arguments, plugins=plugins)
 
 
 # Populate commands
