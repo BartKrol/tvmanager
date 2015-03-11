@@ -1,2 +1,8 @@
-[![Stories in Ready](https://badge.waffle.io/bartkrol/tvmanager.png?label=ready&title=Ready)](https://waffle.io/bartkrol/tvmanager)
-Master [![Build Status](https://travis-ci.org/BartKrol/tvmanager.svg?branch=master)](https://travis-ci.org/BartKrol/tvmanager)
+[![Build Status](https://travis-ci.org/BartKrol/tvmanager.svg?branch=master)](https://travis-ci.org/BartKrol/tvmanager)
+
+A simple web app to pointlessly track your favourite tv shows.
+
+# Client
+
+# Server
+The documentation for server is available in the [server](server) directory.

@@ -1,0 +1,20 @@
+<!--TODO - refactor into angular-boostrap-->
+<div class="row" ng-controller="ShowsCtrl">
+  <div class="col-md-6 col-md-offset-3">
+    <tabset>
+      <tab ng-repeat="show in shows" heading="{{show.name}}" active="show.active" disabled="show.disabled">
+        <div class="panel-body">
+          <p>
+            S{{show.next.season}}E{{show.next.code}}
+            <strong>{{show.next.title}}</strong>, {{show.next.airdate}}
+          </p>
+          <p>
+           S{{show.previous.season}}E{{show.previous.code}}
+           <strong>{{show.previous.title}}</strong>, {{show.previous.airdate}}
+         </p>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+</div>
+

@@ -1,0 +1,42 @@
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #fff;
+}
+
+/*
+* Base structure
+*/
+
+html,
+body {
+  background-color: #055;
+  padding-top: 50px;
+}
+
+body {
+  color: #fff;
+}
+
+.modal-dialog {
+  color: #000000;
+}
+
+/*
+* Navbar
+*/
+.navbar{
+  color: #000;
+  background-color: #066;
+}
+

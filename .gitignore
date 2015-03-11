@@ -54,3 +54,16 @@ target/
 
 # Idea
 .idea
+
+# Database
+*.sqlite
+
+## Javascript
+node_modules/
+bower_components/
+.sass-cache/
+.tmp/
+dist/
+
+# Static is build automatically
+server/app/static
