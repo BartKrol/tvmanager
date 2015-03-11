@@ -1,4 +1,3 @@
-from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 
@@ -24,9 +23,3 @@ class User(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-class SeriesForUsers(db.Model):
-    __tablename__ = 'series_for_user'
-
-    series_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, ForeignKey("user.id"))

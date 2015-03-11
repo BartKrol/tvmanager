@@ -21,7 +21,7 @@ def create_app(config_name):
     api_url = '/api/v1'
     from . import main, auth
     api = Api(app)
-    api.add_resource(main.resources.TrendingShows, api_url + '/trending')
+    api.add_resource(main.resources.PopularShows, api_url + '/popular')
 
     return app
 

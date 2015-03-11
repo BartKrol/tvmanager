@@ -3,7 +3,7 @@
 
 import MainCtrl from './main/main.controller';
 import LoginCtrl from '../components/login/login.controller';
-import ShowsService from '../components/shows/shows.service'
+import popularShows from '../components/shows/shows.service'
 import ShowsCtrl from '../components/shows/shows.controller.js';
 
 var dependencies = [
@@ -20,7 +20,7 @@ var dependencies = [
 angular.module('TvManager', dependencies)
   .controller('MainCtrl', MainCtrl)
   .controller('LoginCtrl', LoginCtrl)
-  .controller('ShowsService', ShowsService)
+  .factory('popularShows', popularShows)
   .controller('ShowsCtrl', ShowsCtrl)
 
   .config(function ($stateProvider, $urlRouterProvider, $authProvider) {

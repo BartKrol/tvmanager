@@ -1,11 +1,19 @@
 'use strict';
 /*jshint esnext: true */
 
-function ShowsService() {
-    return {
-    };
+function popularShows($http) {
+  var popularShows = $http.get('/api/v1/popular').
+    success(function(data, status, headers, config) {
+      return data;
+    }).
+    error(function(data, status, headers, config) {
+    });
+
+  return {
+    popularShows: popularShows
+  };
 }
 
-ShowsService.$inject = [];
+popularShows.$inject = ['$http'];
 
-export default ShowsService;
+export default popularShows;
