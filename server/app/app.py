@@ -19,9 +19,13 @@ def create_app(config_name):
 
     # TODO - better solution
     api_url = '/api/v1'
-    from . import main, auth
+
+    from .main import resources
+
+    # TODO - Is this needed
+    from . import  auth
     api = Api(app)
-    api.add_resource(main.resources.TrendingShows, api_url + '/trending')
+    api.add_resource(resources.TrendingShows, api_url + '/trending')
 
     return app
 
