@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 
 from flask.ext.script import Manager, Shell
@@ -13,7 +14,11 @@ manager = Manager(app)
 def test(coverage=False):
     """Run unit tests."""
     import nose
-    arguments = [os.getcwd()]
+
+    server_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Remember that the first argument is always cwd
+    arguments = [os.getcwd(), server_dir]
 
     if coverage:
         arguments.append('--with-coverage')
