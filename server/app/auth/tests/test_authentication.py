@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from flask import g
 from flask.ext.testing import TestCase
 from freezegun import freeze_time
-from app import create_app, db
+from app.app import create_app, db
 from app.auth.token import authenticate, load_user, make_payload
 from app.main.models import User
 

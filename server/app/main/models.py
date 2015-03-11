@@ -1,6 +1,6 @@
 from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import db
+from app.app import db
 
 
 class User(db.Model):
