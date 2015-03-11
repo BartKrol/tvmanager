@@ -4,6 +4,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from settings.config import config
 from flask_bootstrap import Bootstrap
 from flask.ext.restful import Api
+from flask.ext.migrate import Migrate
 
 db = SQLAlchemy()
 jwt = JWT()
@@ -16,6 +17,7 @@ def create_app(config_name):
     db.init_app(app)
     Bootstrap(app)
     jwt.init_app(app)
+    migrate = Migrate(app, db)
 
     # TODO - better solution
     api_url = '/api/v1'

@@ -4,9 +4,9 @@
 import os
 
 from flask.ext.script import Manager, Shell, Server
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.migrate import MigrateCommand
 
-from app.app import db, create_app
+from app.app import create_app
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
