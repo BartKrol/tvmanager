@@ -10,7 +10,6 @@ from app.app import create_app
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-migrate = Migrate(app, db)
 manager = Manager(app)
 
 
