@@ -7,9 +7,8 @@
       <input type="password" name="password" placeholder="Password" class="form-control" ng-model="password" >
     </div>
     <button type="submit" class="btn btn-success" >Sign in</button>
-    <button class="btn btn-danger" >Sign up</button>
+    <button ng-click="signupUser($event)" class="btn btn-danger" >Sign up</button>
   </form>
-
 
   <form class="navbar-form navbar-right" ng-submit="logoutUser()" ng-show="logged">
     <button type="submit" class="btn btn-success" >Log out</button>

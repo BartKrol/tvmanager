@@ -19,7 +19,7 @@ def get_previous_episode(series):
     return episode_information(episode)
 
 
-class TrendingShows(restful.Resource):
+class PopularShows(restful.Resource):
     series_list = ['Supernatural', 'Gotham', 'Flash', 'Suits', 'Arrow']
 
     def get(self):
@@ -33,12 +33,3 @@ class TrendingShows(restful.Resource):
 
         return series_info
 
-
-# class ShowsForUser(restful.Resource):
-#     decorators = [jwt_required()]
-#
-#     def get(self):
-#         return SeriesForUsers.filter(user_id=g.user.id)
-#
-#     def post(self, series_id):
-#         SeriesForUsers(user_id=g.user.id, series_id=series_id)

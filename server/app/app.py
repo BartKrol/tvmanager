@@ -20,7 +20,8 @@ def create_app(config_name):
 
     # TODO - Is this needed
     from . import  auth
-    api.add_resource(resources.TrendingShows, api_url + '/trending')
+    api = Api(app)
+    api.add_resource(resources.PopularShows, api_url + '/popular')
 
     return app
 

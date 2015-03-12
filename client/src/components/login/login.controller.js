@@ -4,7 +4,7 @@
 // TODO - refactor into directive
 
 class LoginCtrl {
-  constructor($scope, $auth) {
+  constructor($scope, $auth, $modal) {
     $scope.logged = false;
 
     $scope.loginUser = function () {
@@ -23,9 +23,19 @@ class LoginCtrl {
     $scope.logoutUser = function () {
       $scope.logged = false;
     };
+
+    $scope.signupUser = function (event) {
+      event.preventDefault();
+      $modal.open(
+        {
+          templateUrl: "components/login/signup.modal.html"
+
+        }
+      )
+    };
   }
 }
 
-LoginCtrl.$inject = ['$scope', '$auth'];
+LoginCtrl.$inject = ['$scope', '$auth', '$modal'];
 
 export default LoginCtrl;
