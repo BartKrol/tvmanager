@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import current_app, g
-from app import jwt
+from app.app import jwt
 from app.main.models import User
 
 

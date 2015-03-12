@@ -1,14 +1,22 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 
-from flask.ext.script import Manager, Shell
+from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from app import db, create_app
+from app.app import db, create_app
+
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 migrate = Migrate(app, db)
 manager = Manager(app)
+
+
+def make_shell_context():
+    """Populate stuff in flask shell"""
+    return dict(app=app, db=db)
 
 @manager.command
 def test(coverage=False):
@@ -24,14 +32,13 @@ def test(coverage=False):
         arguments.append('--with-coverage')
         arguments.append('--cover-package=app')
 
-    nose.main(argv=arguments)
+    return nose.main(argv=arguments)
 
 
-def make_shell_context():
-    return dict(app=app, db=db)
+# Populate commands
+manager.add_command('shell', Shell(make_context=make_shell_context, use_bpython=True))
+manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
-    manager.add_command("shell", Shell(make_context=make_shell_context, use_bpython=True))
-    manager.add_command('db', MigrateCommand)
     manager.run()
 
