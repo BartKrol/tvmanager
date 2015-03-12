@@ -1,17 +1,10 @@
 from flask import current_app
 from unittest2 import TestCase
-from app import create_app
+from .layers import AppLayer
 
 
 class BasicTestCase(TestCase):
-
-    def setUp(self):
-        self.app = create_app('testing')
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-
-    def tearDown(self):
-        self.app_context.pop()
+    layer = AppLayer
 
     def test_app_exists(self):
         self.assertFalse(current_app is None)

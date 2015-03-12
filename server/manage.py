@@ -1,37 +1,44 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 
-from flask.ext.script import Manager, Shell
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.script import Manager, Shell, Server
+from flask.ext.migrate import MigrateCommand
 
-from app import db, create_app
+from app.app import create_app
+
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-migrate = Migrate(app, db)
 manager = Manager(app)
+
+
+def make_shell_context():
+    """Populate stuff in flask shell"""
+    return dict(app=app, db=db)
 
 @manager.command
 def test(coverage=False):
     """Run unit tests."""
-    import nose
+    import nose2
 
-    server_dir = os.path.dirname(os.path.realpath(__file__))
+    script_path = os.path.realpath(__file__)
+    server_path = os.path.dirname(script_path) #+ '/tests'
 
-    # Remember that the first argument is always cwd
-    arguments = [os.getcwd(), server_dir]
+    # Remember that the first argument is always current file
+    arguments = [script_path, '-s', server_path]
+    plugins = ['nose2.plugins.layers']
 
     if coverage:
         arguments.append('--with-coverage')
-        arguments.append('--cover-package=app')
 
-    nose.main(argv=arguments)
+    return nose2.discover(argv=arguments, plugins=plugins)
 
 
-def make_shell_context():
-    return dict(app=app, db=db)
+# Populate commands
+manager.add_command('shell', Shell(make_context=make_shell_context, use_bpython=True))
+manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
-    manager.add_command("shell", Shell(make_context=make_shell_context, use_bpython=True))
-    manager.add_command('db', MigrateCommand)
     manager.run()
 

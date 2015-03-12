@@ -1,25 +1,13 @@
 from datetime import datetime, timedelta
 from flask import g
-from flask.ext.testing import TestCase
 from freezegun import freeze_time
-from app import create_app, db
 from app.auth.token import authenticate, load_user, make_payload
-from app.main.models import User
+from .layers import DbLayer
+from unittest2 import TestCase
 
 
 class UserAuthenticationTest(TestCase):
-    def create_app(self):
-        return create_app('testing')
-
-    def setUp(self):
-        db.create_all()
-        self.user = User(email='test@email.com', password='test')
-        db.session.add(self.user)
-        db.session.commit()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+    layer = DbLayer
 
     def test_verify_password_correct(self):
         self.assertTrue(self.user.verify_password('test'))
@@ -29,18 +17,7 @@ class UserAuthenticationTest(TestCase):
 
 
 class TokenTest(TestCase):
-    def create_app(self):
-        return create_app('testing')
-
-    def setUp(self):
-        db.create_all()
-        self.user = User(email='test@email.com', password='test')
-        db.session.add(self.user)
-        db.session.commit()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+    layer = DbLayer
 
     def test_authenticate_correct(self):
         user = authenticate(username='test@email.com', password='test')
