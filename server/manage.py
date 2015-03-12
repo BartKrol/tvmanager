@@ -31,8 +31,6 @@ def test(coverage=False):
 
     if coverage:
         arguments.append('--with-coverage')
-        # This not available in nose2
-        # arguments.append('--cover-package=app')
 
     return nose2.discover(argv=arguments, plugins=plugins)
 
