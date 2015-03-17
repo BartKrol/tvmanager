@@ -4,7 +4,7 @@
 Install required tools. You need to install node, 
 
 ```sh
-$ npm install -g bower gulp karma
+$ npm install -g bower gulp karma-cli
 ```
 
 ## Setup
@@ -24,4 +24,4 @@ default it will listen to *localhost* on port *5000*.
 $ gulp serve
 ```
 
-*IMPORTANT* - Backend server must be running !
+**IMPORTANT** - Backend server must be running !
